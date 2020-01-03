@@ -81,7 +81,7 @@ public class OptionalTask1 {
       int even = 0;
       int odd = 0;
 
-      for(char charItem : item.toCharArray()){
+      for(char charItem : item.replace("-","").toCharArray()){
         if(charItem%2 == 0 ){
           even++;
         }
@@ -98,10 +98,8 @@ public class OptionalTask1 {
     System.out.println("5.\nNumbers with only even digits: " + evenCount);
     System.out.println("Numbers with same number of odd and even digits: " + evenOddCount);
 
-    int ascendingNumber = 0;
-    int differentDigits = 0;
+    Integer ascendingNumber = null;
     boolean ascFlag = false;
-    boolean diffFlag = false;
     for(String item : stringArray) {
       char[] charItem = item.toCharArray();
       if(charItem.length == 1){
@@ -120,10 +118,24 @@ public class OptionalTask1 {
 
     System.out.println("6.\nAscending number: " + ascendingNumber);
 
+    String differentDigits = null;
+    for(String item : stringArray){
+      char[] charArray = item.toCharArray();
+      Set<Character> set = new LinkedHashSet<>();
+      for(char ch : charArray){
+        set.add(ch);
+     }
+     StringBuilder builder = new StringBuilder();
+      for (Character character : set) {
+        builder.append(character);
+      }
+      if(builder.toString().equals(item)){
+        differentDigits = item;
+        break;
+      }
+    }
 
-
-
-
+    System.out.println("7.\nAll different digits number: " + differentDigits);
   }
 
 }
