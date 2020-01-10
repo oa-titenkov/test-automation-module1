@@ -63,18 +63,18 @@ public class OptionalTask2 {
 
       //Task3
 
-      for (int i = 0; i < n; i++) {
-        int rowSum = 0;
-        int positiveCounter = 0;
-        for (int j = 0; j < n; j++) {
-          if (matrix[i][j] > 0 && positiveCounter < 2) {
-            positiveCounter++;
-          } else if (matrix[i][j] < 0 && positiveCounter < 2 && positiveCounter != 0) {
-            rowSum += matrix[i][j];
-          }
-        }
-        System.out.println("Sum on row " + (i + 1) + " = " + rowSum);
-      }
+//      for (int i = 0; i < n; i++) {
+//        int rowSum = 0;
+//        int positiveCounter = 0;
+//        for (int j = 0; j < n; j++) {
+//          if (matrix[i][j] > 0 && positiveCounter < 2) {
+//            positiveCounter++;
+//          } else if (matrix[i][j] < 0 && positiveCounter < 2 && positiveCounter != 0) {
+//            rowSum += matrix[i][j];
+//          }
+//        }
+//        System.out.println("Sum on row " + (i + 1) + " = " + rowSum);
+//      }
 
     }
   }
