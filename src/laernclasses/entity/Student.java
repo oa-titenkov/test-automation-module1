@@ -1,4 +1,4 @@
-package LearnJavaClasses.Entity;
+package laernclasses.entity;
 
 import java.time.LocalDate;
 

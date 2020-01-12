@@ -1,6 +1,6 @@
-package LearnJavaClasses.Action;
+package laernclasses.action;
 
-import LearnJavaClasses.Entity.Student;
+import laernclasses.entity.Student;
 
 import java.time.LocalDate;
 import java.util.*;

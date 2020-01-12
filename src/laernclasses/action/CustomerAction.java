@@ -1,6 +1,6 @@
-package LearnJavaClasses.Action;
+package laernclasses.action;
 
-import LearnJavaClasses.Entity.Customer;
+import laernclasses.entity.Customer;
 
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;

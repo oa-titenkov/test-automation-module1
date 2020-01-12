@@ -1,6 +1,6 @@
-package LearnJavaClasses.Action;
+package laernclasses.action;
 
-import LearnJavaClasses.Entity.Patient;
+import laernclasses.entity.Patient;
 
 import java.util.ArrayList;
 import java.util.List;
