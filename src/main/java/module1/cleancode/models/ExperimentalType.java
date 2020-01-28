@@ -1,5 +1,5 @@
 package module1.cleancode.models;
 
-public enum ExperimentalTypes {
+public enum ExperimentalType {
     LIFTING_BODY, HYPERSONIC, HIGH_ALTITUDE, VTOL
 }

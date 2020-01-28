@@ -24,7 +24,7 @@ public class Action {
     System.out.println(sortFlowersByFreshnessLevel(bouquet, SortTypes.DESCENDING));
   }
 
-  public static Bouquet makeBouquet(int id, List<Flower> flowersList, List<FlowerAccessory> flowerAccessoriesList) {
+  private static Bouquet makeBouquet(int id, List<Flower> flowersList, List<FlowerAccessory> flowerAccessoriesList) {
     double totalPrice = 0;
     for(Flower flower : flowersList) {
       totalPrice =+ (flower.getPrice() * flower.getAmount());
@@ -35,7 +35,7 @@ public class Action {
     return new Bouquet(id, flowersList, flowerAccessoriesList, totalPrice);
   }
 
-  public static List<Flower> findFlowersByStemLengthRange(Bouquet bouquet, double minLength, double maxLength) {
+  private static List<Flower> findFlowersByStemLengthRange(Bouquet bouquet, double minLength, double maxLength) {
     List<Flower> flowersInRange = new ArrayList<>();
     for(Flower flower : bouquet.getFlowerList()){
       if(flower.getStemLength() >= minLength && flower.getStemLength() <= maxLength){
@@ -45,7 +45,7 @@ public class Action {
     return flowersInRange;
   }
 
-  public static Bouquet sortFlowersByFreshnessLevel(Bouquet bouquet, SortTypes sortType) {
+  private static Bouquet sortFlowersByFreshnessLevel(Bouquet bouquet, SortTypes sortType) {
     if(sortType == SortTypes.ASCENDING) {
       bouquet.getFlowerList().sort(Comparator.comparingInt(Flower::getFreshnessLevel));
       return bouquet;

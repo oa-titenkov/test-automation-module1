@@ -23,5 +23,3 @@ public class Task4 {
   }
 
 }
-
-// TODO: 23.01.2020 path 

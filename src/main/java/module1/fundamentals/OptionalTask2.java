@@ -19,66 +19,47 @@ public class OptionalTask2 {
       }
       System.out.print("\n");
     }
+    sortMatrixByColumnOrRow(matrix);
+  }
 
-    //Task1
-
-    System.out.println("Введите номер столбца:");
+  private static void sortMatrixByColumnOrRow(int[][] matrix) {
+    Scanner input = new Scanner(System.in);
+    System.out.println("Type column number:");
     int column = input.nextInt();
     Arrays.sort(matrix, Comparator.comparingInt(a -> a[column - 1])); //по k-столбцу
     System.out.println("Sorted by column:");
-    for (int i = 0; i < n; i++) {
-      for (int j = 0; j < n; j++) {
+    for (int i = 0; i < matrix.length; i++) {
+      for (int j = 0; j < matrix.length; j++) {
         System.out.print(matrix[i][j] + " ");
       }
       System.out.print("\n");
     }
 
-//    System.out.println("Введите номер строки:");
-//    int row = input.nextInt();
-//    Arrays.sort(matrix, (a, b) -> Double.compare(a[0], b[0])); //по k-столбцу
-//    System.out.println("Sorted by row:");
-//    for (int i = 0; i < n; i++) {
-//      for (int j = 0; j < n; j++) {
-//        System.out.print(matrix[i][j] + " ");
-//      }
-//      System.out.print("\n");
-//    }
+    System.out.println("Type row number:");
+    int row = input.nextInt();
+    bubbleSort(matrix, matrix.length, row);
+    System.out.println("Sorted by row:");
+    for (int i = 0; i < matrix.length; i++) {
+      for (int j = 0; j < matrix.length; j++) {
+        System.out.print(matrix[i][j] + " ");
+      }
+      System.out.print("\n");
+    }
+  }
 
-
-    //Task3
-    int ascNumber = 0;
-    int ascMax = 0;
-    for (int i = 0; i < n; i++) {
-      for (int j = 0; j < n - 1; j++) {
-        if (matrix[i][j] < matrix[i][j + 1]) {
-          ascNumber++;
-        } else if (matrix[i][j] >= matrix[i][j + 1]) {
-          if (ascNumber > ascMax) {
-            if (ascNumber > ascMax) {
-              ascMax = ascNumber;
-              ascNumber = 0;
-            } else ascNumber = 0;
-          }
+  private static void bubbleSort(int matrix[][], int length, int row)
+  {
+    if (length == 1) return;
+    for (int i = 0; i < (length-1); i++)
+      if (matrix[row][i] > matrix[row][i+1])
+      {
+        for(int j = 0; j < matrix.length; j++){
+          int temp = matrix[j][i];
+          matrix[j][i] = matrix[j][i+1];
+          matrix[j][i+1] = temp;
         }
       }
-      System.out.println("Max ascending numbers count: " + ascMax);
-
-      //Task3
-
-//      for (int i = 0; i < n; i++) {
-//        int rowSum = 0;
-//        int positiveCounter = 0;
-//        for (int j = 0; j < n; j++) {
-//          if (matrix[i][j] > 0 && positiveCounter < 2) {
-//            positiveCounter++;
-//          } else if (matrix[i][j] < 0 && positiveCounter < 2 && positiveCounter != 0) {
-//            rowSum += matrix[i][j];
-//          }
-//        }
-//        System.out.println("Sum on row " + (i + 1) + " = " + rowSum);
-//      }
-
-    }
+    bubbleSort(matrix, length - 1, row);
   }
 
 }

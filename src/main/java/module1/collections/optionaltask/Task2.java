@@ -20,6 +20,3 @@ public class Task2 {
             .collect(Collectors.joining()));
   }
 }
-
-
-

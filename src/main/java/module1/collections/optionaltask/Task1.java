@@ -26,5 +26,3 @@ public class Task1 {
   }
 
 }
-
-// TODO: 23.01.2020 deal with exception, path route, arraylist declaration

@@ -1,20 +1,20 @@
 package module1.cleancode.planes;
 
 import module1.cleancode.models.ClassificationLevel;
-import module1.cleancode.models.ExperimentalTypes;
+import module1.cleancode.models.ExperimentalType;
 
 public class ExperimentalPlane extends Plane{
 
     private ClassificationLevel classificationLevel;
-    private ExperimentalTypes type;
+    private ExperimentalType type;
 
-    public ExperimentalPlane(String model, int maxSpeed, int maxFlightDistance, int maxLoadCapacity, ExperimentalTypes type, ClassificationLevel classificationLevel) {
+    public ExperimentalPlane(String model, int maxSpeed, int maxFlightDistance, int maxLoadCapacity, ExperimentalType type, ClassificationLevel classificationLevel) {
         super(model, maxSpeed, maxFlightDistance, maxLoadCapacity);
         this.type = type;
         this.classificationLevel = classificationLevel;
     }
 
-    public ExperimentalTypes getType() {
+    public ExperimentalType getType() {
         return type;
     }
 

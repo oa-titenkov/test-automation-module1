@@ -148,6 +148,4 @@ public class OptionalTask1 {
     System.out.println("7.\nAll different digits number: " + differentDigits);
   }
 
-
-
 }
