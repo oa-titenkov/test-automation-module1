@@ -1,4 +1,4 @@
-package module1.collections.maintask;
+package module1.collections.maintask.model;
 
 import java.util.Objects;
 
@@ -19,7 +19,7 @@ public class Flower {
     this.freshnessLevel = freshnessLevel;
   }
 
-  Flower(int id, String name, double price, double stemLength, int freshnessLevel, int amount) {
+  public Flower(int id, String name, double price, double stemLength, int freshnessLevel, int amount) {
     this.id = id;
     this.name = name;
     this.price = price;

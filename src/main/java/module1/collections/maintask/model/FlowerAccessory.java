@@ -1,4 +1,4 @@
-package module1.collections.maintask;
+package module1.collections.maintask.model;
 
 import java.util.Objects;
 
@@ -15,7 +15,7 @@ public class FlowerAccessory {
     this.price = price;
   }
 
-  FlowerAccessory(int id, String name, double price, int amount) {
+  public FlowerAccessory(int id, String name, double price, int amount) {
     this.id = id;
     this.name = name;
     this.price = price;

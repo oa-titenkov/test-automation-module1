@@ -1,5 +1,9 @@
 package module1.collections.maintask;
 
+import module1.collections.maintask.model.Bouquet;
+import module1.collections.maintask.model.Flower;
+import module1.collections.maintask.model.FlowerAccessory;
+
 import java.util.*;
 
 public class Action {
@@ -27,7 +31,7 @@ public class Action {
   private static Bouquet makeBouquet(int id, List<Flower> flowersList, List<FlowerAccessory> flowerAccessoriesList) {
     double totalPrice = 0;
     for(Flower flower : flowersList) {
-      totalPrice =+ (flower.getPrice() * flower.getAmount());
+      totalPrice += (flower.getPrice() * flower.getAmount());
     }
     for(FlowerAccessory flowerAccessory : flowerAccessoriesList){
       totalPrice += (flowerAccessory.getPrice() * flowerAccessory.getAmount());

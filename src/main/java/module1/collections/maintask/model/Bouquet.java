@@ -1,4 +1,4 @@
-package module1.collections.maintask;
+package module1.collections.maintask.model;
 
 import java.util.List;
 import java.util.Objects;
@@ -10,7 +10,7 @@ public class Bouquet {
   private List<FlowerAccessory> flowerAccessoryList;
   private double bouquetPrice;
 
-  Bouquet(int id, List<Flower> flowerList, List<FlowerAccessory> flowerAccessoryList, double bouquetPrice) {
+  public Bouquet(int id, List<Flower> flowerList, List<FlowerAccessory> flowerAccessoryList, double bouquetPrice) {
     this.id = id;
     this.flowerList = flowerList;
     this.flowerAccessoryList = flowerAccessoryList;
