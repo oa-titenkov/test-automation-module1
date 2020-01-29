@@ -9,12 +9,16 @@ import java.util.Scanner;
 
 public class Task4 {
 
-  public static void main(String[] args) throws FileNotFoundException {
+  public static void main(String[] args) {
     List<String> poemLines = new ArrayList<>();
     File poemFile = new File("src\\resources\\poem_alltheworld.txt");
-    Scanner scanner = new Scanner(poemFile);
-    while(scanner.hasNextLine()) {
-      poemLines.add(scanner.nextLine());
+    try {
+      Scanner scanner = new Scanner(poemFile);
+      while(scanner.hasNextLine()) {
+        poemLines.add(scanner.nextLine());
+      }
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
     }
     poemLines.sort(Comparator.comparingInt(String::length));
     for (String line : poemLines) {
