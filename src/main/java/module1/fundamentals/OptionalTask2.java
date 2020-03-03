@@ -16,10 +16,10 @@ public class OptionalTask2 {
       }
       System.out.print("\n");
     }
+    sortMatrixByColumnOrRow(matrix);
     findLargestAscendingAndDescendingNumberSequence(matrix);
     findSumOfTwoFirstPositiveNumbersOfRow(matrix);
-    sortMatrixByColumnOrRow(matrix);
-    findMaxMatrixNumberAndDeleteColumnsAndRowsWithIt(matrix, maxNumberCount(matrix));
+    findMaxMatrixNumberAndDeleteColumnsAndRowsWithIt(matrix);
 
   }
 
@@ -27,7 +27,7 @@ public class OptionalTask2 {
     Scanner input = new Scanner(System.in);
     System.out.println("Enter column number:");
     int column = input.nextInt();
-    Arrays.sort(matrix, Comparator.comparingInt(a -> a[column - 1])); //по k-столбцу
+    Arrays.sort(matrix, Comparator.comparingInt(a -> a[column - 1]));
     System.out.println("Sorted by column:");
     for (int i = 0; i < matrix.length; i++) {
       for (int j = 0; j < matrix.length; j++) {
@@ -117,7 +117,7 @@ public class OptionalTask2 {
       }
     }
   }
-  private static int maxNumberCount(int[][] matrix) {
+  private static void findMaxMatrixNumberAndDeleteColumnsAndRowsWithIt(int[][] matrix) {
     int max = matrix[0][0];
     int maxCount = 0;
     for (int i = 0; i < matrix.length; i++) {
@@ -134,7 +134,7 @@ public class OptionalTask2 {
         }
       }
     }
-    return maxCount;
+    findMaxMatrixNumberAndDeleteColumnsAndRowsWithIt(matrix, maxCount);
   }
 
   private static void findMaxMatrixNumberAndDeleteColumnsAndRowsWithIt(int[][] matrix, int maxNumberCount) {

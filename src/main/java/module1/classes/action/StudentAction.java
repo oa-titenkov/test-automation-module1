@@ -16,10 +16,10 @@ public class StudentAction {
   );
 
   public static void main(String[] args) {
-//    getStudentsByFaculty(studentList, "FIS");
-//    getStudentsAfterBirthdayYear(studentList, 1993);
-//    getStudentsByFacultyAndCourse(studentList);
-//    getStudentsByGroup(studentList,"PS21");
+    getStudentsByFaculty(studentList, "FIS");
+    getStudentsAfterBirthdayYear(studentList, 1993);
+    getStudentsByFacultyAndCourse(studentList);
+    getStudentsByGroup(studentList,"PS21");
   }
 
   private static void getStudentsByFaculty(List<Student> studentList, String faculty) {
