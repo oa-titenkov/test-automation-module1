@@ -8,6 +8,8 @@ public class MainTask5
   public static void main(String args[]) {
     String[] months = {"JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"};
     Scanner input = new Scanner(System.in);
+    System.out.println("Введите число месяца:");
+
     try {
       int monthNumber = input.nextInt();
       System.out.println(months[monthNumber - 1]);

@@ -9,6 +9,7 @@ public class OptionalTask2 {
     System.out.print("Enter matrix dimensions: ");
     int n = input.nextInt();
     int[][] matrix = new int[n][n];
+
     for (int i = 0; i < n; i++) {
       for (int j = 0; j < n; j++) {
         matrix[i][j] = new Random().nextInt(20) - 10;
@@ -16,6 +17,7 @@ public class OptionalTask2 {
       }
       System.out.print("\n");
     }
+
     sortMatrixByColumnOrRow(matrix);
     findLargestAscendingAndDescendingNumberSequence(matrix);
     findSumOfTwoFirstPositiveNumbersOfRow(matrix);
@@ -27,8 +29,11 @@ public class OptionalTask2 {
     Scanner input = new Scanner(System.in);
     System.out.println("Enter column number:");
     int column = input.nextInt();
+
     Arrays.sort(matrix, Comparator.comparingInt(a -> a[column - 1]));
+
     System.out.println("Sorted by column:");
+
     for (int i = 0; i < matrix.length; i++) {
       for (int j = 0; j < matrix.length; j++) {
         System.out.print(matrix[i][j] + " ");
@@ -38,8 +43,11 @@ public class OptionalTask2 {
 
     System.out.println("Enter row number:");
     int row = input.nextInt();
+
     bubbleSort(matrix, matrix.length, row);
+
     System.out.println("Sorted by row:");
+
     for (int i = 0; i < matrix.length; i++) {
       for (int j = 0; j < matrix.length; j++) {
         System.out.print(matrix[i][j] + " ");
@@ -53,6 +61,7 @@ public class OptionalTask2 {
     int descCount = 0;
     int ascMaxCount = 1;
     int descMaxCount = 0;
+
     for(int i = 0; i < matrix.length; i++) {
       if(i > 0 && matrix[i-1][matrix.length - 1] < matrix[i][0]){
         ascCount++;
@@ -62,6 +71,7 @@ public class OptionalTask2 {
         ascCount = 1;
       }
       else ascCount = 1;
+
       if(i > 0 && matrix[i-1][matrix.length - 1] > matrix[i][0]){
         descCount++;
       }
@@ -70,6 +80,7 @@ public class OptionalTask2 {
         descCount = 1;
       }
       else descCount = 1;
+
       for(int j = 0; j < matrix.length - 1; j++){
         if(matrix[i][j] < matrix[i][j+1]) {
           ascCount++;
@@ -79,6 +90,7 @@ public class OptionalTask2 {
           ascCount = 1;
         }
         else ascCount = 1;
+
         if(matrix[i][j] > matrix[i][j+1]) {
           descCount++;
         }
@@ -89,6 +101,7 @@ public class OptionalTask2 {
         else descCount = 1;
       }
     }
+
     System.out.println("Largest ascending sequence = " + ascMaxCount);
     System.out.println("Largest descending sequence = " + descMaxCount);
   }
@@ -98,9 +111,11 @@ public class OptionalTask2 {
     int firstPositiveIndex = 0;
     int secondPositiveIndex;
     int sum;
+
     for(int i = 0; i < matrix.length; i++) {
       sum = 0;
       positiveCount = 0;
+
       for(int j = 0; j < matrix.length; j++){
         if(matrix[i][j] > 0 && positiveCount == 0) {
           positiveCount++;
@@ -109,9 +124,11 @@ public class OptionalTask2 {
         else if(matrix[i][j] > 0 && positiveCount == 1) {
           positiveCount++;
           secondPositiveIndex = j;
+
           for(int k = firstPositiveIndex; k <= secondPositiveIndex; k++) {
             sum = sum + matrix[i][k];
           }
+
           System.out.println("sum of the row " + i + " = " + sum);
         }
       }
@@ -120,6 +137,7 @@ public class OptionalTask2 {
   private static void findMaxMatrixNumberAndDeleteColumnsAndRowsWithIt(int[][] matrix) {
     int max = matrix[0][0];
     int maxCount = 0;
+
     for (int i = 0; i < matrix.length; i++) {
       for (int j = 0; j < matrix.length; j++) {
         if(matrix[i][j] > max) {
@@ -127,6 +145,7 @@ public class OptionalTask2 {
         }
       }
     }
+
     for (int i = 0; i < matrix.length; i++) {
       for (int j = 0; j < matrix.length; j++) {
         if(matrix[i][j] == max) {
@@ -134,6 +153,7 @@ public class OptionalTask2 {
         }
       }
     }
+
     findMaxMatrixNumberAndDeleteColumnsAndRowsWithIt(matrix, maxCount);
   }
 
@@ -142,9 +162,11 @@ public class OptionalTask2 {
     int rowMax  = 0;
     int columnMax = 0;
     int count = maxNumberCount;
+
     if(count == 0) {
       return;
     }
+
     for (int i = 0; i < matrix.length; i++) {
       for (int j = 0; j < matrix.length; j++) {
         if(matrix[i][j] > max) {
@@ -154,31 +176,40 @@ public class OptionalTask2 {
         }
       }
     }
+
     System.out.println("Max number = " + max);
     System.out.println("Max number appearances = " + maxNumberCount);
+
     for(int i = rowMax, j = 0; j < matrix.length ; j++){
       if(matrix[i][j] == max){
         count--;
       }
     }
+
     for(int i = 0, j = columnMax; i < matrix.length ; i++){
       if(matrix[i][j] == max){
         count--;
       }
     }
+
     count++;
+
     System.out.println("New matrix:");
+
     int[][] noMaxMatrix = new int[matrix.length - 1][matrix.length - 1];
     int newRowIndex = 0;
+
     for(int i = 0; i < matrix.length; i++){
       int newColumnIndex = 0;
       if(i != rowMax){
+
         for(int j = 0; j < matrix.length; j++) {
           if(j != columnMax){
             noMaxMatrix[newRowIndex][newColumnIndex] = matrix[i][j];
             newColumnIndex++;
           }
         }
+
         newRowIndex++;
       }
     }
@@ -193,9 +224,9 @@ public class OptionalTask2 {
     findMaxMatrixNumberAndDeleteColumnsAndRowsWithIt(noMaxMatrix, count);
   }
 
-  private static void bubbleSort(int matrix[][], int length, int row)
-  {
+  private static void bubbleSort(int matrix[][], int length, int row) {
     if (length == 1) return;
+
     for (int i = 0; i < (length-1); i++)
       if (matrix[row][i] > matrix[row][i+1])
       {
@@ -205,6 +236,7 @@ public class OptionalTask2 {
           matrix[j][i+1] = temp;
         }
       }
+
     bubbleSort(matrix, length - 1, row);
   }
 
