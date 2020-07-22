@@ -17,8 +17,11 @@ public class StudentAction {
 
   public static void main(String[] args) {
     getStudentsByFaculty(studentList, "FIS");
+    System.out.println();
     getStudentsAfterBirthdayYear(studentList, 1993);
+    System.out.println();
     getStudentsByFacultyAndCourse(studentList);
+    System.out.println();
     getStudentsByGroup(studentList,"PS21");
   }
 
@@ -33,22 +36,28 @@ public class StudentAction {
   private static void getStudentsByFacultyAndCourse(List<Student> studentList) {
     Set<String> facultySet = new HashSet<>();
     Set<Integer> courseSet = new HashSet<>();
+
     for(Student student : studentList){
       facultySet.add(student.getFaculty());
       courseSet.add(student.getCourse());
     }
+
     List<String> facultyList = new ArrayList<>(facultySet);
     List<Integer> courseList = new ArrayList<>(courseSet);
+
     for (String aFacultyList : facultyList) {
       System.out.println(aFacultyList);
+
       for (Student student : studentList) {
         if (student.getFaculty().equals(aFacultyList)) {
           System.out.println(student.toString());
         }
       }
     }
+
     for (Integer aCourseList : courseList) {
       System.out.println("course - " + aCourseList);
+
       for (Student student : studentList) {
         if (student.getCourse() == aCourseList) {
           System.out.println(student.toString());
