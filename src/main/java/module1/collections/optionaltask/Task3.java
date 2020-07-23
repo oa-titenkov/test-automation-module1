@@ -18,9 +18,11 @@ public class Task3 {
 
   private static Collection<File> listFileTree(File directoryName) {
     Set<File> fileTree = new HashSet<>();
+
     if(directoryName == null || directoryName.listFiles() == null){
       return fileTree;
     }
+
     for (File entry : Objects.requireNonNull(directoryName.listFiles())) {
       if (entry.isFile()) {
         fileTree.add(entry);
@@ -29,6 +31,7 @@ public class Task3 {
         fileTree.addAll(listFileTree(entry));
       }
     }
+
     return fileTree;
   }
 

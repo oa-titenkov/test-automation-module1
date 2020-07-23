@@ -15,20 +15,21 @@ import java.util.Scanner;
 public class Task1 {
 
   public static void main(String[] args) {
-    File fileToReverse = new File("src\\resources\\collections_optionaltask1.txt");
+    Path fileToReverse = Paths.get("src\\resources\\collections_optionaltask1.txt");
     Path fileReversed = Paths.get("src\\resources\\collections_optionaltask1_reversed.txt");
     List<String> stringList = new ArrayList<>();
+
     try {
       Scanner scanner = new Scanner(fileToReverse);
+
       while(scanner.hasNextLine()) {
         stringList.add(scanner.nextLine());
       }
+
       Collections.reverse(stringList);
       Files.write(fileReversed, stringList, StandardCharsets.UTF_8);
     } catch (IOException e) {
       e.printStackTrace();
     }
-
   }
-
 }
