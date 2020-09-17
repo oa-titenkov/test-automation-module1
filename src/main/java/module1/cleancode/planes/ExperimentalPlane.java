@@ -3,7 +3,7 @@ package module1.cleancode.planes;
 import module1.cleancode.models.ClassificationLevel;
 import module1.cleancode.models.ExperimentalType;
 
-public class ExperimentalPlane extends Plane{
+public class ExperimentalPlane extends Plane {
 
     private ClassificationLevel classificationLevel;
     private ExperimentalType type;
@@ -18,11 +18,11 @@ public class ExperimentalPlane extends Plane{
         return type;
     }
 
-    public ClassificationLevel getClassificationLevel(){
+    public ClassificationLevel getClassificationLevel() {
         return classificationLevel;
     }
 
-    public void setClassificationLevel(ClassificationLevel classificationLevel){
+    public void setClassificationLevel(ClassificationLevel classificationLevel) {
         this.classificationLevel = classificationLevel;
     }
 
