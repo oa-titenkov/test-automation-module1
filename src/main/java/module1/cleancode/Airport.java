@@ -94,11 +94,11 @@ public class Airport {
         return this;
     }
 
-    public List<? extends Plane> getPlanes() {
+    public List<? extends Plane> getAllPlanes() {
         return planes;
     }
 
-    private void printPlanes(Collection<? extends Plane> collection) {
+    private void printAllPlanesToConsole(Collection<? extends Plane> collection) {
         for (Plane plane : collection) {
             System.out.println(plane);
         }

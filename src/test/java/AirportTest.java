@@ -3,6 +3,7 @@ import module1.cleancode.models.ClassificationLevel;
 import module1.cleancode.models.ExperimentalType;
 import module1.cleancode.models.MilitaryType;
 import module1.cleancode.planes.*;
+import org.junit.Before;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -53,7 +54,7 @@ public class AirportTest {
         Airport airport = new Airport(planes);
         List<? extends Plane> planesByMaxLoadCapacity = new ArrayList<>(planes);
         planesByMaxLoadCapacity.sort(Comparator.comparingInt(plane -> plane.getPlaneSpecifications().getMaxLoadCapacity()));
-        Assert.assertEquals(airport.sortByMaxLoadCapacity().getPlanes(), planesByMaxLoadCapacity);
+        Assert.assertEquals(airport.sortByMaxLoadCapacity().getAllPlanes(), planesByMaxLoadCapacity);
     }
 
     @Test
