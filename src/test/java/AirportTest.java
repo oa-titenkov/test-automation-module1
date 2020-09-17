@@ -35,23 +35,22 @@ public class AirportTest {
 
     private static PassengerPlane planeWithMaxPassengerCapacity = new PassengerPlane("Boeing-747", new PlaneSpecifications(980, 16100, 70500) , 242);
 
+    private final Airport airport = new Airport(planes);
+
     @Test
     public void testHasAtLeastOneTransportMilitaryPlane() {
-        Airport airport = new Airport(planes);
         List<MilitaryPlane> transportMilitaryPlanes = airport.getTransportMilitaryPlanes();
         Assert.assertFalse(transportMilitaryPlanes.isEmpty());
     }
 
     @Test
     public void testGetPassengerPlaneWithMaxCapacity() {
-        Airport airport = new Airport(planes);
         PassengerPlane expectedPlaneWithMaxPassengersCapacity = airport.getPassengerPlaneWithMaxPassengersCapacity();
         Assert.assertTrue(expectedPlaneWithMaxPassengersCapacity.equals(planeWithMaxPassengerCapacity));
     }
 
     @Test
     public void testNextPlaneMaxLoadCapacityIsHigherThanCurrent() {
-        Airport airport = new Airport(planes);
         List<? extends Plane> planesByMaxLoadCapacity = new ArrayList<>(planes);
         planesByMaxLoadCapacity.sort(Comparator.comparingInt(plane -> plane.getPlaneSpecifications().getMaxLoadCapacity()));
         Assert.assertEquals(airport.sortByMaxLoadCapacity().getAllPlanes(), planesByMaxLoadCapacity);
@@ -59,17 +58,15 @@ public class AirportTest {
 
     @Test
     public void testHasAtLeastOneBomberInMilitaryPlanes() {
-        Airport airport = new Airport(planes);
         List<MilitaryPlane> bomberMilitaryPlanes = airport.getBomberMilitaryPlanes();
         Assert.assertFalse(bomberMilitaryPlanes.isEmpty());
     }
 
     @Test
     public void testExperimentalPlanesHasClassificationLevelHigherThanUnclassified(){
-        Airport airport = new Airport(planes);
         List<ExperimentalPlane> experimentalPlanes = airport.getExperimentalPlanes();
         Assert.assertFalse(experimentalPlanes.stream().
                 anyMatch(plane -> plane.getClassificationLevel().equals(ClassificationLevel.UNCLASSIFIED)));
-
     }
+
 }
