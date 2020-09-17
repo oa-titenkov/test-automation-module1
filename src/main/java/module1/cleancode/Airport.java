@@ -1,10 +1,7 @@
 package module1.cleancode;
 
 import module1.cleancode.models.MilitaryType;
-import module1.cleancode.planes.ExperimentalPlane;
-import module1.cleancode.planes.MilitaryPlane;
-import module1.cleancode.planes.PassengerPlane;
-import module1.cleancode.planes.Plane;
+import module1.cleancode.planes.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -83,17 +80,17 @@ public class Airport {
     }
 
     public Airport sortByMaxDistance() {
-        planes.sort(Comparator.comparingInt(Plane::getMaxFlightDistance));
+        planes.sort(Comparator.comparingInt(plane -> plane.getPlaneSpecifications().getMaxFlightDistance()));
         return this;
     }
 
     public Airport sortByMaxSpeed() {
-        planes.sort(Comparator.comparingInt(Plane::getMaxSpeed));
+        planes.sort(Comparator.comparingInt(plane -> plane.getPlaneSpecifications().getMaxSpeed()));
         return this;
     }
 
     public Airport sortByMaxLoadCapacity() {
-        planes.sort(Comparator.comparingInt(Plane::getMaxLoadCapacity));
+        planes.sort(Comparator.comparingInt(plane -> plane.getPlaneSpecifications().getMaxLoadCapacity()));
         return this;
     }
 
