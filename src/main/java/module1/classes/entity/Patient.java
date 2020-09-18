@@ -1,6 +1,8 @@
 package module1.classes.entity;
 
 
+import java.util.Objects;
+
 public class Patient {
 
   private int id;
@@ -107,5 +109,25 @@ public class Patient {
             ", medicalCardNumber=" + medicalCardNumber +
             ", diagnosis='" + diagnosis + '\'' +
             '}';
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Patient patient = (Patient) o;
+    return id == patient.id &&
+            medicalCardNumber == patient.medicalCardNumber &&
+            Objects.equals(lastName, patient.lastName) &&
+            Objects.equals(firstName, patient.firstName) &&
+            Objects.equals(middleName, patient.middleName) &&
+            Objects.equals(address, patient.address) &&
+            Objects.equals(phoneNumber, patient.phoneNumber) &&
+            Objects.equals(diagnosis, patient.diagnosis);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, lastName, firstName, middleName, address, phoneNumber, medicalCardNumber, diagnosis);
   }
 }
