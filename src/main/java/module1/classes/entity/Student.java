@@ -1,6 +1,7 @@
 package module1.classes.entity;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Student {
 
@@ -21,7 +22,10 @@ public class Student {
     this.lastName = lastName;
     this.faculty = faculty;
     String[] birthdayArray  = birthday.split("\\.");
-    this.birthday = LocalDate.of(Integer.parseInt(birthdayArray[2]), Integer.parseInt(birthdayArray[1]), Integer.parseInt(birthdayArray[0]));
+    this.birthday = LocalDate.of(
+            Integer.parseInt(birthdayArray[2]),
+            Integer.parseInt(birthdayArray[1]),
+            Integer.parseInt(birthdayArray[0]));
     this.course = course;
     this.group = group;
   }
@@ -143,4 +147,25 @@ public class Student {
             '}';
   }
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Student student = (Student) o;
+    return id == student.id &&
+            course == student.course &&
+            Objects.equals(lastName, student.lastName) &&
+            Objects.equals(firstName, student.firstName) &&
+            Objects.equals(middleName, student.middleName) &&
+            Objects.equals(birthday, student.birthday) &&
+            Objects.equals(address, student.address) &&
+            Objects.equals(phoneNumber, student.phoneNumber) &&
+            Objects.equals(faculty, student.faculty) &&
+            Objects.equals(group, student.group);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, lastName, firstName, middleName, birthday, address, phoneNumber, faculty, course, group);
+  }
 }

@@ -7,7 +7,7 @@ import java.util.*;
 
 public class StudentAction {
 
-  private static List<Student> studentList = Arrays.asList(
+  private static final List<Student> studentList = Arrays.asList(
           new Student(0, "Oleg", "Titenkov", "FIS", "31.07.1993", 1, "PS22"),
           new Student(1, "Andrei", "Popel", "FAIS", "17.08.1992", 1,"PS22"),
           new Student(2, "Olga", "Makarenko", "FAIS", "17.08.1992",2, "PS22" ),
@@ -16,16 +16,16 @@ public class StudentAction {
   );
 
   public static void main(String[] args) {
-    getStudentsByFaculty(studentList, "FIS");
+    getStudentsByFaculty("FIS");
     System.out.println();
-    getStudentsAfterBirthdayYear(studentList, 1993);
+    getStudentsAfterBirthdayYear(1993);
     System.out.println();
-    getStudentsByFacultyAndCourse(studentList);
+    getStudentsByFacultyAndCourse();
     System.out.println();
-    getStudentsByGroup(studentList,"PS21");
+    getStudentsByGroup("PS21");
   }
 
-  private static void getStudentsByFaculty(List<Student> studentList, String faculty) {
+  private static void getStudentsByFaculty(String faculty) {
     for(Student student : studentList){
       if(student.getFaculty().equals(faculty)){
         System.out.println(student.toString());
@@ -33,7 +33,7 @@ public class StudentAction {
     }
   }
 
-  private static void getStudentsByFacultyAndCourse(List<Student> studentList) {
+  private static void getStudentsByFacultyAndCourse() {
     Set<String> facultySet = new HashSet<>();
     Set<Integer> courseSet = new HashSet<>();
 
@@ -48,7 +48,7 @@ public class StudentAction {
     for (String aFacultyList : facultyList) {
       System.out.println(aFacultyList);
 
-      for (Student student : studentList) {
+      for (Student student : StudentAction.studentList) {
         if (student.getFaculty().equals(aFacultyList)) {
           System.out.println(student.toString());
         }
@@ -58,7 +58,7 @@ public class StudentAction {
     for (Integer aCourseList : courseList) {
       System.out.println("course - " + aCourseList);
 
-      for (Student student : studentList) {
+      for (Student student : StudentAction.studentList) {
         if (student.getCourse() == aCourseList) {
           System.out.println(student.toString());
         }
@@ -66,7 +66,7 @@ public class StudentAction {
     }
   }
 
-  private static void getStudentsAfterBirthdayYear(List<Student> studentList, int year) {
+  private static void getStudentsAfterBirthdayYear(int year) {
     for(Student student : studentList){
       if(student.getBirthday().isAfter(LocalDate.of(year,1,1))){
         System.out.println(student.toString());
@@ -74,7 +74,7 @@ public class StudentAction {
     }
   }
 
-  private static void getStudentsByGroup(List<Student> studentList, String group) {
+  private static void getStudentsByGroup(String group) {
     for(Student student : studentList){
       if(student.getGroup().equals(group)){
         System.out.println(student.toString());
