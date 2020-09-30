@@ -3,6 +3,8 @@ package module1.cleancode.planes;
 import module1.cleancode.models.ClassificationLevel;
 import module1.cleancode.models.ExperimentalType;
 
+import java.util.Objects;
+
 public class ExperimentalPlane extends Plane {
 
     private ClassificationLevel classificationLevel;
@@ -28,18 +30,25 @@ public class ExperimentalPlane extends Plane {
 
     @Override
     public boolean equals(Object o) {
-        return super.equals(o);
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        ExperimentalPlane that = (ExperimentalPlane) o;
+        return classificationLevel == that.classificationLevel &&
+                type == that.type;
     }
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return Objects.hash(super.hashCode(), classificationLevel, type);
     }
 
     @Override
     public String toString() {
         return "ExperimentalPlane{" +
                 "model='" + model + '\'' +
+                "type='" + type + '\'' +
+                "planeSpecifications='" + planeSpecifications + '\'' +
                 '}';
     }
 }
