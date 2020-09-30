@@ -1,7 +1,7 @@
 package module1.collections.maintask.model;
 
-import java.util.ArrayList;
-import java.util.Comparator;
+import module1.collections.maintask.action.BouquetAction;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -10,39 +10,12 @@ public class Bouquet {
     private int id;
     private List<Flower> flowerList;
     private List<FlowerAccessory> flowerAccessoryList;
-    private double bouquetPrice;
+    private double price;
 
     public Bouquet(int id, List<Flower> flowerList, List<FlowerAccessory> flowerAccessoryList) {
         this.id = id;
         this.flowerList = flowerList;
         this.flowerAccessoryList = flowerAccessoryList;
-        this.calculatePrice();
-    }
-
-    public Bouquet sortFlowersByFreshnessLevel() {
-        flowerList.sort(Comparator.comparingInt(Flower::getFreshnessLevel));
-        return this;
-    }
-
-    public List<Flower> findFlowersByStemLengthRange(double minLength, double maxLength) {
-        List<Flower> flowersInRange = new ArrayList<>();
-        for (Flower flower : this.getFlowerList()) {
-            if (flower.getStemLength() >= minLength && flower.getStemLength() <= maxLength) {
-                flowersInRange.add(flower);
-            }
-        }
-        return flowersInRange;
-    }
-
-    private void calculatePrice() {
-        double totalPrice = 0;
-        for(Flower flower : this.flowerList) {
-            totalPrice += (flower.getPrice() * flower.getAmount());
-        }
-        for(FlowerAccessory flowerAccessory : this.flowerAccessoryList){
-            totalPrice += (flowerAccessory.getPrice() * flowerAccessory.getAmount());
-        }
-        this.bouquetPrice = totalPrice;
     }
 
     public int getId() {
@@ -69,12 +42,12 @@ public class Bouquet {
         this.flowerAccessoryList = flowerAccessoryList;
     }
 
-    public double getBouquetPrice() {
-        return bouquetPrice;
+    public double getPrice() {
+        return price;
     }
 
-    public void setBouquetPrice(double bouquetPrice) {
-        this.bouquetPrice = bouquetPrice;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
 
@@ -84,7 +57,7 @@ public class Bouquet {
         if (o == null || getClass() != o.getClass()) return false;
         Bouquet bouquet = (Bouquet) o;
         return id == bouquet.id &&
-                Double.compare(bouquet.bouquetPrice, bouquetPrice) == 0 &&
+                Double.compare(bouquet.price, price) == 0 &&
                 Objects.equals(flowerList, bouquet.flowerList) &&
                 Objects.equals(flowerAccessoryList, bouquet.flowerAccessoryList);
     }
@@ -92,7 +65,7 @@ public class Bouquet {
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, flowerList, flowerAccessoryList, bouquetPrice);
+        return Objects.hash(id, flowerList, flowerAccessoryList, price);
     }
 
     @Override
@@ -107,7 +80,8 @@ public class Bouquet {
         for(FlowerAccessory accessory : flowerAccessoryList) {
             sb.append(accessory.toString()).append("\n");
         }
-        sb.append("Total price: ").append(bouquetPrice);
+        BouquetAction.calculateBouquetPrice(this);
+        sb.append("Total price: ").append(price);
         return sb.toString();
     }
 
