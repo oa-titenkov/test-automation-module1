@@ -4,10 +4,10 @@ import java.util.Objects;
 
 public abstract class Plane {
 
-    String model;
-    private PlaneSpecifications planeSpecifications;
+    protected final String model;
+    protected final PlaneSpecifications planeSpecifications;
 
-    Plane(String model, PlaneSpecifications planeSpecifications) {
+    public Plane(String model, PlaneSpecifications planeSpecifications) {
         this.model = model;
         this.planeSpecifications = planeSpecifications;
     }
